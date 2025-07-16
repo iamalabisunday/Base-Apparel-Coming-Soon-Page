@@ -6,7 +6,7 @@ import iconArrow from "./images/icon-arrow.svg";
 
 export default function BaseApparel() {
   return (
-    <main className="md:w-screen md:h-screen md:flex md:flex-row-reverse md:items-center md:justify-center">
+    <main className="md:w-screen md:h-screen md:flex md:flex-row-reverse md:items-center md:justify-center md:bg-[url(./images/bg-pattern-desktop.svg)] md:bg-cover md:bg-no-repeat">
       {/* Logo for mobile view  */}
       <header className="p-8 w-full h-fit md:hidden">
         <img src={logo} alt="logo" className="w-[8rem]" />
