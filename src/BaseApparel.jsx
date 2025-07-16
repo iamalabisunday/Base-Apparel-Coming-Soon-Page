@@ -14,15 +14,14 @@ export default function BaseApparel() {
 
   // Validate as the user types
   const handleEmailChange = (event) => {
-    const newEmail = event.target.value; // Corrected: Get value from event
-    setEmail(newEmail); // Corrected: Update email state
+    const newEmail = event.target.value; // Get value from event
+    setEmail(newEmail); // Update email state
 
     if (newEmail === "") {
       setErrorMessage(""); // Clear error if field becomes empty
       setIsValid(false);
     } else if (!emailRegex.test(newEmail)) {
-      // Corrected: .test() method
-      setErrorMessage("The email address is not formatted correctly"); // More specific message
+      setErrorMessage("The email address is not formatted correctly");
       setIsValid(false);
     } else {
       setErrorMessage(""); // Clear error if format becomes correct
@@ -32,29 +31,24 @@ export default function BaseApparel() {
 
   // Submit-handler for the form
   const handleSubmit = (event) => {
-    event.preventDefault(); // Always prevent default form submission
+    event.preventDefault(); // Prevent default form submission
 
     // Perform final validation on submit
     if (email === "") {
-      setErrorMessage("Email address cannot be empty."); // Specific error for empty
+      setErrorMessage("Input a valid email address.");
       setIsValid(false);
       return; // Stop submission
-    } else if (!emailRegex.test(email)) {
-      // Corrected: .test() method
-      setErrorMessage("The email address is not formatted correctly"); // Specific error for format
+    } // Email iS Invalid
+    else if (!emailRegex.test(email)) {
+      setErrorMessage("The email address is invalid");
       setIsValid(false);
       return; // Stop submission
+    } // Email is valid and not empty
+    else {
+      setErrorMessage("");
+      setIsValid(true);
+      setEmail(""); // Clear the input field after successful submission
     }
-
-    // If we reach here, the email is valid and not empty
-    setErrorMessage(""); // Clear any lingering error message
-    setIsValid(true);
-    console.log("Email submitted successfully:", email);
-
-    // --- Here you would typically send the email to your backend/API ---
-
-    // Clear the input field after successful submission
-    setEmail("");
   };
 
   return (
@@ -122,7 +116,7 @@ export default function BaseApparel() {
 
           {/* Error Message Display */}
           {errorMessage && (
-            <p className="absolute -bottom-8 left-0 text-[#FB7D7D] text-xs md:text-sm pl-5 font-semibold">
+            <p className="absolute -bottom-8 left-0 text-[#FB7D7D] text-xs md:text-sm pl-5 font-medium">
               {errorMessage}
             </p>
           )}
