@@ -107,7 +107,7 @@ export default function BaseApparel() {
           <button
             type="submit"
             aria-label="Submit"
-            className="px-8 py-4 rounded-full flex items-center justify-center bg-[#FB7D7D] hover:bg-[#fd8e8e] transition-colors duration-200"
+            className="px-8 py-4 rounded-full flex items-center justify-center bg-[#FB7D7D] hover:bg-[#fd8e8e] transition-colors duration-200 pointer"
           >
             <img src={iconArrow} alt="arrow" className="w-full" />
           </button>
