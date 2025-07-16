@@ -38,7 +38,7 @@ export default function BaseApparel() {
       setErrorMessage("Input a valid email address.");
       setIsValid(false);
       return; // Stop submission
-    } // Email iS Invalid
+    } // Email iS Invalid not empty
     else if (!emailRegex.test(email)) {
       setErrorMessage("The email address is invalid");
       setIsValid(false);
@@ -88,12 +88,13 @@ export default function BaseApparel() {
         </p>
         {/* Input and Button Section */}
         <form
-          // Corrected: onSubmit calls handleSubmit
+          // onSubmit calls handleSubmit
           onSubmit={handleSubmit}
           className="mt-6 mb-[4.5rem] w-[90%] md:w-[25rem] md:h-[3rem] flex items-center md:ml-[12rem] rounded-full border-1 active:border-[#FB7D7D] hover:border-[#FB7D7D] relative"
           // Conditional border color based on error state
-          style={{ borderColor: errorMessage ? "#FB7D7D" : "#DEA3A3" }} // Using style for dynamic border color
+          style={{ borderColor: errorMessage ? "#FB7D7D" : "#DEA3A3" }}
         >
+          {/* Input Section */}
           <input
             type="email"
             id="emailInput"
@@ -101,14 +102,11 @@ export default function BaseApparel() {
             onChange={handleEmailChange}
             placeholder="Email Address"
             className="border-none w-full outline-none pl-5 pr-5 py-3 md:w-full placeholder:text-[0.85rem] placeholder:text-[#FFC8C8] rounded-full"
-            // Adding red text and focus ring for error
-            style={{ color: errorMessage ? "#FB7D7D" : "" }} // Text color for error
           />
-          {/* Corrected: This should be a <button type="submit"> */}
+          {/* button Section */}
           <button
-            type="submit" // IMPORTANT: This makes it a submit button for the form
-            aria-label="Submit" // For accessibility since there's no visible text
-            // Styling and positioning for the arrow button
+            type="submit"
+            aria-label="Submit"
             className="px-8 py-4 rounded-full flex items-center justify-center bg-[#FB7D7D] hover:bg-[#fd8e8e] transition-colors duration-200"
           >
             <img src={iconArrow} alt="arrow" className="w-full" />
